@@ -39,12 +39,14 @@ public class JsonHelpers {
      * @param schemaName Name of the file of the schema which will be used for validating the
      * response body. The schema JSON file should be present as this function searches the resource
      * folder to get the schema file.
-     * @return
+     * @return  This method returns true if the response json is a valid json against the
+     * given schema.If the response json is not valid it returns false.
      */
     public static boolean jsonSchemaValidator(Response response, String schemaName)
     {
         try
         {
+            log.info("Loading JSON schema file : {}.json",schemaName);
             JSONObject jsonSchema = new JSONObject(new JSONTokener
                     (JsonHelpers.class.getResourceAsStream("/"+schemaName+".json")));
             Schema schema = SchemaLoader.load(jsonSchema);

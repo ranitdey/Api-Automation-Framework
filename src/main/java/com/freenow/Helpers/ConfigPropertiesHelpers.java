@@ -1,5 +1,8 @@
 package com.freenow.Helpers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,19 +15,24 @@ public class ConfigPropertiesHelpers {
     public static String propertiesFilePath = "/src/main/resources/Properties/";
     public static String getPropertiesFileName = "Config.properties";
 
+    private static Logger log =  LoggerFactory.getLogger(ConfigPropertiesHelpers.class);
+
 
     public Properties loadPropertiesFile()
     {
         Properties properties = new Properties();
+        String path = getCurrentDirectory() + propertiesFilePath + getPropertiesFileName;
         try
         {
-            InputStream propertiesFileStram = new FileInputStream
-                    (getCurrentDirectory() + propertiesFilePath + getPropertiesFileName);
-            properties.load(propertiesFileStram);
+            log.info("Loading properties file from: {}",path);
+            InputStream propertiesFileStream = new FileInputStream(path);
+            properties.load(propertiesFileStream);
+            log.info("Completed loading properties file from {}",path);
         }
         catch (IOException ex)
         {
-            ex.printStackTrace();
+            log.info("::::::::::::::Loading properties file failed::::::::::::::");
+            log.info("Error: ",ex.getStackTrace());
         }
         return properties;
     }
