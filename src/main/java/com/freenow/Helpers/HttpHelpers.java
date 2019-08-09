@@ -1,4 +1,4 @@
-package com.freenow;
+package com.freenow.Helpers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
