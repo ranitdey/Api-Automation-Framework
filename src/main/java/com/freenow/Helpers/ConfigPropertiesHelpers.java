@@ -31,8 +31,8 @@ public class ConfigPropertiesHelpers {
         }
         catch (IOException ex)
         {
-            log.info("::::::::::::::Loading properties file failed::::::::::::::");
-            log.info("Error: ",ex.getStackTrace());
+            log.info(":::::::::::::: Loading properties file failed ::::::::::::::");
+            log.info("Error: {}",ex.getStackTrace());
         }
         return properties;
     }
