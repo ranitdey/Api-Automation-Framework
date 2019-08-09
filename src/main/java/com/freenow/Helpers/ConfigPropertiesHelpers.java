@@ -1,8 +1,13 @@
 package com.freenow.Helpers;
 
+/**
+ * @author Ranit
+ * Created on 09/08/2019
+ *
+ */
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,10 +1,14 @@
 package com.freenow.Helpers;
+/**
+ * @author Ranit
+ * Created on 09/08/2019
+ *
+ */
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
