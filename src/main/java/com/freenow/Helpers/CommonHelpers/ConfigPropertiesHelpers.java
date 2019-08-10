@@ -14,11 +14,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import static com.freenow.Constants.Constants.getPropertiesFileName;
+import static com.freenow.Constants.Constants.log4jConfPath;
+import static com.freenow.Constants.Constants.propertiesFilePath;
+
 public class ConfigPropertiesHelpers {
 
-    public static String propertiesFilePath = "/src/main/resources/properties/";
-    public static String getPropertiesFileName = "Config.properties";
-    public static String log4jConfPath = "/src/main/resources/properties/log4j.properties";
+
 
     private static Logger log =  LoggerFactory.getLogger(ConfigPropertiesHelpers.class);
 
@@ -26,7 +28,7 @@ public class ConfigPropertiesHelpers {
     public Properties loadPropertiesFile()
     {
         Properties properties = new Properties();
-        String path = FileHelpers.getCurrentDirectory() + propertiesFilePath + getPropertiesFileName;
+        String path = FileHelpers.getCurrentDirectory()+ propertiesFilePath + getPropertiesFileName;
         try
         {
             log.info("Loading properties file from: {}",path);
