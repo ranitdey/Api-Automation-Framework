@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="API Automation Tests" verbose="1" parallel="false" >
 <listeners>
-    <listener class-name="com.freenow.Listeners.TestListener" />
+    <listener class-name="com.freenow.listeners.TestListener" />
 </listeners>
     <suite-files>
         <suite-file path="suite1.xml" />

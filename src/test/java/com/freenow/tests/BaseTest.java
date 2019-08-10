@@ -2,6 +2,7 @@ package com.freenow.tests;
 
 
 import com.freenow.helpers.ConfigPropertiesHelpers;
+import com.freenow.helpers.HttpHelpers;
 
 import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
@@ -20,12 +21,14 @@ import org.testng.annotations.BeforeSuite;
 public class BaseTest {
 
     private static Logger log =  LoggerFactory.getLogger(BaseTest.class);
-    private ConfigPropertiesHelpers config;
+    protected ConfigPropertiesHelpers config;
+    protected HttpHelpers api;
 
 
     @BeforeSuite(alwaysRun = true)
     public void setup()
     {
+        api = new HttpHelpers();
         config = new ConfigPropertiesHelpers();
         config.loadLogConfiguration();
         log.info("********************* API Automation Suite Started *********************");

@@ -1,23 +1,19 @@
 package com.freenow.tests.suite1;
 
-import org.testng.annotations.BeforeClass;
+
 import org.testng.annotations.Test;
-import com.freenow.helpers.HttpHelpers;
+import com.freenow.tests.BaseTest;
 
-public class UserCommentScenarios {
-
-    private HttpHelpers api;
+public class UserCommentScenarios extends BaseTest {
 
 
-    @BeforeClass
-    public void initialize() {
-         api = new HttpHelpers();
-    }
+
 
     @Test
     public void test1()
     {
         //Basic Test
+
 
     }
 
