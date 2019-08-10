@@ -1,4 +1,4 @@
-package com.freenow.helpers;
+package com.freenow.helpers.CommonHelpers;
 /**
  * @author Ranit
  * Created on 09/08/2019
@@ -64,4 +64,6 @@ public class JsonHelpers {
             return false;
         }
     }
+
+
 }

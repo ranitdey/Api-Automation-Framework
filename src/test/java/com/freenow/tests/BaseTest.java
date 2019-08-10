@@ -1,10 +1,9 @@
 package com.freenow.tests;
 
 
-import com.freenow.helpers.ConfigPropertiesHelpers;
-import com.freenow.helpers.HttpHelpers;
+import com.freenow.helpers.CommonHelpers.ConfigPropertiesHelpers;
+import com.freenow.helpers.CommonHelpers.HttpHelpers;
 
-import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
