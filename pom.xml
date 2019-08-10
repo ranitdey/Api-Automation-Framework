@@ -58,8 +58,30 @@
   </dependencies>
 
   <build>
+      <sourceDirectory>src/main/java</sourceDirectory>
+      <testSourceDirectory>src/test/java</testSourceDirectory>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>2.22.1</version>
+              <configuration>
+                  <properties>
+                      <property>
+                          <!--Configuration of Verbose of Report or Information -->
+                          <name>surefire.testng.verbose</name>
+                          <value>2</value>
+                      </property>
+                  </properties>
+                  <suiteXmlFiles>
+                      <!--Configuration of xml file that is picked by maven to run TestNG
+                          suite -->
+                      <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                      <suiteXmlFile>src/test/resources/suite1.xml</suiteXmlFile>
+                  </suiteXmlFiles>
+              </configuration>
+          </plugin>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -73,10 +95,6 @@
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>

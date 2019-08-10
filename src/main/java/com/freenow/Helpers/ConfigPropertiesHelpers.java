@@ -1,4 +1,4 @@
-package com.freenow.Helpers;
+package com.freenow.helpers;
 
 /**
  * @author Ranit
@@ -6,6 +6,7 @@ package com.freenow.Helpers;
  *
  */
 
+import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.FileInputStream;
@@ -13,12 +14,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import static com.freenow.Helpers.FileHelpers.getCurrentDirectory;
-
 public class ConfigPropertiesHelpers {
 
-    public static String propertiesFilePath = "/src/main/resources/Properties/";
+    public static String propertiesFilePath = "/src/main/resources/properties/";
     public static String getPropertiesFileName = "Config.properties";
+    public static String log4jConfPath = "/src/main/resources/properties/log4j.properties";
 
     private static Logger log =  LoggerFactory.getLogger(ConfigPropertiesHelpers.class);
 
@@ -26,7 +26,7 @@ public class ConfigPropertiesHelpers {
     public Properties loadPropertiesFile()
     {
         Properties properties = new Properties();
-        String path = getCurrentDirectory() + propertiesFilePath + getPropertiesFileName;
+        String path = FileHelpers.getCurrentDirectory() + propertiesFilePath + getPropertiesFileName;
         try
         {
             log.info("Loading properties file from: {}",path);
@@ -41,5 +41,12 @@ public class ConfigPropertiesHelpers {
         }
         return properties;
     }
+
+    public void loadLogConfiguration()
+    {
+        PropertyConfigurator.configure(FileHelpers.getCurrentDirectory()+log4jConfPath);
+    }
+
+
 
 }

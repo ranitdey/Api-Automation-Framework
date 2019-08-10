@@ -1,4 +1,4 @@
-package com.freenow.Helpers;
+package com.freenow.helpers;
 /**
  * @author Ranit
  * Created on 09/08/2019
