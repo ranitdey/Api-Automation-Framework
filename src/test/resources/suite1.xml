@@ -2,6 +2,7 @@
 <suite name="SanitySuite1" verbose="1" parallel="false" >
 
     <test name="User Actions Sanity Tests">
+        <parameter name="user" value="Samantha"/>
         <packages>
             <package name="com.freenow.tests"/>
         </packages>

@@ -55,6 +55,11 @@ public class UrlHelpers {
         return url;
     }
 
+    public String generateURL(EndpointURL path)
+    {
+        return endpoint + path.getResourcePath();
+    }
+
 
 
 }

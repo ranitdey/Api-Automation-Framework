@@ -1,8 +1,12 @@
 package com.freenow.tests;
 
 
+import com.freenow.helpers.AssertionHelpers.AssertionHelper;
 import com.freenow.helpers.CommonHelpers.ConfigPropertiesHelpers;
 import com.freenow.helpers.CommonHelpers.HttpHelpers;
+import com.freenow.helpers.CommonHelpers.UrlHelpers;
+import com.freenow.helpers.EntityHelpers.PostHelpers;
+import com.freenow.helpers.EntityHelpers.UserHelpers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +26,10 @@ public class BaseTest {
     private static Logger log =  LoggerFactory.getLogger(BaseTest.class);
     protected ConfigPropertiesHelpers config;
     protected HttpHelpers api;
+    protected UrlHelpers urlUtils;
+    protected UserHelpers usersUtil;
+    protected AssertionHelper assertionUtil;
+    protected PostHelpers postUtils;
 
 
     @BeforeSuite(alwaysRun = true)
@@ -30,6 +38,10 @@ public class BaseTest {
         api = new HttpHelpers();
         config = new ConfigPropertiesHelpers();
         config.loadLogConfiguration();
+        urlUtils = new UrlHelpers();
+        usersUtil = new UserHelpers();
+        assertionUtil= new AssertionHelper();
+        postUtils= new PostHelpers();
         log.info("********************* API Automation Suite Started *********************");
         log.info("Initializing Test Suite.");
 

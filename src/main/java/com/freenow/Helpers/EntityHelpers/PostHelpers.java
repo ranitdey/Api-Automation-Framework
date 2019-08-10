@@ -1,5 +1,6 @@
 package com.freenow.helpers.EntityHelpers;
 
+import com.freenow.models.Post;
 import com.freenow.models.User;
 
 import org.json.JSONArray;
@@ -17,13 +18,13 @@ public class PostHelpers {
      * @param posts JSON response of posts in string format.
      * @return  This returns a list which contains post objects.
      */
-    public List<User> extractPosts(String posts)
+    public List<Post> extractPosts(String posts)
     {
-        List<User> postsList = new ArrayList<>();
+        List<Post> postsList = new ArrayList<>();
         JSONArray postsArray = new JSONArray(posts);
         for (int i = 0; i < postsArray.length(); i++)
         {
-            postsList.add(new User(postsArray.getJSONObject(i)));
+            postsList.add(new Post(postsArray.getJSONObject(i)));
         }
         return postsList;
     }

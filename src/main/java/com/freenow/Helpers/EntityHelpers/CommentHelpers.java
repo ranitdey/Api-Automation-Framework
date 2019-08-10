@@ -1,9 +1,7 @@
 package com.freenow.helpers.EntityHelpers;
 
-import com.freenow.models.User;
-
+import com.freenow.models.Comment;
 import org.json.JSONArray;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +15,13 @@ public class CommentHelpers {
      * @param comments JSON response of comments in string format.
      * @return  This returns a list which contains comment objects.
      */
-    public List<User> extractComments(String comments)
+    public List<Comment> extractComments(String comments)
     {
-        List<User> commentsList = new ArrayList<>();
+        List<Comment> commentsList = new ArrayList<>();
         JSONArray commentsArray = new JSONArray(comments);
         for (int i = 0; i < commentsArray.length(); i++)
         {
-            commentsList.add(new User(commentsArray.getJSONObject(i)));
+            commentsList.add(new Comment(commentsArray.getJSONObject(i)));
         }
         return commentsList;
     }
