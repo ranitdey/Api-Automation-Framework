@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
@@ -30,7 +31,7 @@ public class JsonHelpers {
      * @param jsonString  String representation of a JSON object
      * @return This returns a formatted string
      */
-    public static String toPrettyFormat(String jsonString)
+    public String toPrettyFormat(String jsonString)
     {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonElement jsonElement =  new JsonParser().parse(jsonString);
@@ -46,15 +47,15 @@ public class JsonHelpers {
      * @return  This method returns true if the response json is a valid json against the
      * given schema.If the response json is not valid it returns false.
      */
-    public static boolean jsonSchemaValidator(Response response, String schemaName)
+    public boolean jsonSchemaValidator(Response response, String schemaName)
     {
         try
         {
             log.info("Loading JSON schema file : {}.json",schemaName);
             JSONObject jsonSchema = new JSONObject(new JSONTokener
-                    (JsonHelpers.class.getResourceAsStream("/"+schemaName+".json")));
+                    (JsonHelpers.class.getResourceAsStream("/schemas/"+schemaName+".json")));
             Schema schema = SchemaLoader.load(jsonSchema);
-            schema.validate(new JSONObject(response.getBody().asString()));
+            schema.validate(new JSONArray(response.getBody().asString()));
             return true;
         }
         catch (ValidationException e)

@@ -92,7 +92,7 @@
                   <suiteXmlFiles>
                       <!--Configuration of xml file that is picked by maven to run TestNG
                           suite -->
-                      <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                      <suiteXmlFile>src/test/resources/configurations/testng.xml</suiteXmlFile>
                   </suiteXmlFiles>
               </configuration>
           </plugin>

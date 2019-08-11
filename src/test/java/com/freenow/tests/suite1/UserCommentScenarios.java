@@ -31,8 +31,12 @@ public class UserCommentScenarios extends BaseTest {
         Response response = api.get(urlUtils
                 .generateURL(UrlHelpers.EndpointURL.USERS,queryParams),api.getDefaultHeaders());
         Assert.assertEquals(response.statusCode(),200);
-        Assert.assertEquals(usersUtil
-                .extractUsers(response.getBody().asString()).get(0).getUsername(),user);
+        assert jsonUtil.jsonSchemaValidator(response,"userSchema");
+        User testUser = usersUtil.extractUsers(response.getBody().asString()).get(0);
+        Assert.assertEquals(testUser.getUsername(),user);
+        Assert.assertNotEquals(testUser.getUsername().length(),0);
+        Assert.assertNotEquals(testUser.getEmail().length(),0);
+        assertionUtil.validate(testUser.getEmail());
     }
 
     @Parameters("user")
@@ -42,6 +46,7 @@ public class UserCommentScenarios extends BaseTest {
         Response response = api.get(urlUtils
                 .generateURL(UrlHelpers.EndpointURL.USERS),api.getDefaultHeaders());
         Assert.assertEquals(response.statusCode(),200);
+        assert jsonUtil.jsonSchemaValidator(response,"userSchema");
         users = usersUtil.extractUsers(response.getBody().asString());
         Samantha = users.stream().filter(user -> testUser.equals(user.getUsername()))
                                         .distinct()
@@ -49,6 +54,8 @@ public class UserCommentScenarios extends BaseTest {
                                         .get();
         Assert.assertEquals(Samantha.getUsername(),testUser);
         assertionUtil.validate(Samantha.getEmail());
+        Assert.assertNotEquals(Samantha.getUsername().length(),0);
+        Assert.assertNotEquals(Samantha.getEmail().length(),0);
     }
 
     @Test(description = "Find all posts of an user and validate",dependsOnMethods = "searchForUser")
@@ -59,8 +66,13 @@ public class UserCommentScenarios extends BaseTest {
         Response response = api.get(urlUtils
                 .generateURL(UrlHelpers.EndpointURL.POSTS,queryParams),api.getDefaultHeaders());
         Assert.assertEquals(response.statusCode(),200);
+        assert jsonUtil.jsonSchemaValidator(response,"postSchema");
         posts = postUtils.extractPosts(response.getBody().asString());
-        posts.forEach(post-> Assert.assertEquals(post.getUserId(),Samantha.getId()));
+        posts.forEach(post->{
+            Assert.assertEquals(post.getUserId(),Samantha.getId());
+            Assert.assertNotEquals(post.getBody().length(),0);
+            Assert.assertNotEquals(post.getTitle().length(),0);
+        });
     }
 
     @Test(description = "Find all comments for each post of an user and validate the email format"
@@ -74,12 +86,15 @@ public class UserCommentScenarios extends BaseTest {
                 Response response = api.get(urlUtils.generateURL(UrlHelpers
                         .EndpointURL.COMMENTS,queryParams),api.getDefaultHeaders());
                 Assert.assertEquals(response.statusCode(),200);
+                assert jsonUtil.jsonSchemaValidator(response,"commentSchema");
                 comments = commentUtil.extractComments(response.getBody().asString());
                 comments
                         .forEach(comment->
                         {
                             assertionUtil.validate(comment.getEmail());
                             Assert.assertEquals(post.getId(),comment.getPostId());
+                            Assert.assertNotEquals(comment.getBody(),0);
+                            Assert.assertNotEquals(comment.getName(),0);
                         });
             });
     }
@@ -99,7 +114,6 @@ public class UserCommentScenarios extends BaseTest {
             Assert.assertEquals(testPost.getUserId(),Samantha.getId());
             Assert.assertEquals(testPost.getId(),post.getId());
         });
-
     }
 
     @Test(description = "Find each comments in test user's posts using query parameters in URL"
@@ -117,6 +131,7 @@ public class UserCommentScenarios extends BaseTest {
             Assert.assertEquals(testComment.getPostId(),comment.getPostId());
             Assert.assertEquals(testComment.getId(),comment.getId());
         });
-
     }
+
+
 }

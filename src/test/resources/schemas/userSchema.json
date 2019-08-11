@@ -1,0 +1,110 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "array",
+  "title": "Users Schema",
+  "items": {
+    "$id": "#/items",
+    "type": "object",
+    "title": "The Items Schema",
+    "required": [
+      "id",
+      "name",
+      "username",
+      "email",
+      "address",
+      "phone",
+      "website",
+      "company"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer",
+      },
+      "name": {
+        "type": "string"
+      },
+      "username": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "address": {
+        "type": "object",
+        "required": [
+          "street",
+          "suite",
+          "city",
+          "zipcode",
+          "geo"
+        ],
+        "properties": {
+          "street": {
+            "type": "string"
+          },
+          "suite": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "zipcode": {
+            "type": "string"
+          },
+          "geo": {
+            "$id": "#/items/properties/address/properties/geo",
+            "type": "object",
+            "required": [
+              "lat",
+              "lng"
+            ],
+            "properties": {
+              "lat": {
+                "$id": "#/items/properties/address/properties/geo/properties/lat",
+                "type": "string"
+              },
+              "lng": {
+                "$id": "#/items/properties/address/properties/geo/properties/lng",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "phone": {
+        "$id": "#/items/properties/phone",
+        "type": "string"
+      },
+      "website": {
+        "$id": "#/items/properties/website",
+        "type": "string"
+      },
+      "company": {
+        "$id": "#/items/properties/company",
+        "type": "object",
+        "title": "The Company Schema",
+        "required": [
+          "name",
+          "catchPhrase",
+          "bs"
+        ],
+        "properties": {
+          "name": {
+            "$id": "#/items/properties/company/properties/name",
+            "type": "string"
+          },
+          "catchPhrase": {
+            "$id": "#/items/properties/company/properties/catchPhrase",
+            "type": "string"
+          },
+          "bs": {
+            "$id": "#/items/properties/company/properties/bs",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

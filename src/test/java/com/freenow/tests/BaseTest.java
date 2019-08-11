@@ -4,6 +4,7 @@ package com.freenow.tests;
 import com.freenow.helpers.AssertionHelpers.AssertionHelper;
 import com.freenow.helpers.CommonHelpers.ConfigPropertiesHelpers;
 import com.freenow.helpers.CommonHelpers.HttpHelpers;
+import com.freenow.helpers.CommonHelpers.JsonHelpers;
 import com.freenow.helpers.CommonHelpers.UrlHelpers;
 import com.freenow.helpers.EntityHelpers.CommentHelpers;
 import com.freenow.helpers.EntityHelpers.PostHelpers;
@@ -32,6 +33,7 @@ public class BaseTest {
     protected AssertionHelper assertionUtil;
     protected PostHelpers postUtils;
     protected CommentHelpers commentUtil;
+    protected JsonHelpers jsonUtil;
 
 
     @BeforeSuite(alwaysRun = true)
@@ -45,6 +47,7 @@ public class BaseTest {
         assertionUtil= new AssertionHelper();
         postUtils= new PostHelpers();
         commentUtil = new CommentHelpers();
+        jsonUtil = new JsonHelpers();
         log.info("********************* API Automation Suite Started *********************");
         log.info("Initializing Test Suite.");
 
