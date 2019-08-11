@@ -60,31 +60,63 @@ public class UserCommentScenarios extends BaseTest {
                 .generateURL(UrlHelpers.EndpointURL.POSTS,queryParams),api.getDefaultHeaders());
         Assert.assertEquals(response.statusCode(),200);
         posts = postUtils.extractPosts(response.getBody().asString());
-        posts.stream()
-                .forEach(post-> Assert.assertEquals(post.getUserId(),Samantha.getId()));
+        posts.forEach(post-> Assert.assertEquals(post.getUserId(),Samantha.getId()));
     }
 
-    @Test(description = "Find all comments for each post of an user and validate"
+    @Test(description = "Find all comments for each post of an user and validate the email format"
             ,dependsOnMethods = "validateUserPosts")
     public void validatePostComments()
     {
         Map<String,String> queryParams = new HashMap<>();
-        posts.stream()
-                .forEach(post->{
-                    queryParams.put("postId",Integer.toString(post.getId()));
-                    Response response = api.get(urlUtils.generateURL(UrlHelpers
-                            .EndpointURL.COMMENTS,queryParams),api.getDefaultHeaders());
-                    Assert.assertEquals(response.statusCode(),200);
-                    comments = commentUtil.extractComments(response.getBody().asString());
-                    comments.stream()
-                            .forEach(comment->
-                            {
-                                assertionUtil.validate(comment.getEmail());
-                                Assert.assertEquals(post.getId(),comment.getPostId());
-                            });
-                });
+        posts
+            .forEach(post->{
+                queryParams.put("postId",Integer.toString(post.getId()));
+                Response response = api.get(urlUtils.generateURL(UrlHelpers
+                        .EndpointURL.COMMENTS,queryParams),api.getDefaultHeaders());
+                Assert.assertEquals(response.statusCode(),200);
+                comments = commentUtil.extractComments(response.getBody().asString());
+                comments
+                        .forEach(comment->
+                        {
+                            assertionUtil.validate(comment.getEmail());
+                            Assert.assertEquals(post.getId(),comment.getPostId());
+                        });
+            });
     }
 
+    @Test(description = "For the test user find each of his posts using query parameters in URL"
+            ,dependsOnMethods = "validateUserPosts")
+    public void validatePostsByQueryParam()
+    {
+        Map<String,String> queryParams = new HashMap<>();
+        posts.forEach(post->{
+            queryParams.put("userId",Integer.toString(Samantha.getId()));
+            queryParams.put("id",Integer.toString(post.getId()));
+            Response response = api.get(urlUtils.generateURL(UrlHelpers
+                    .EndpointURL.POSTS,queryParams),api.getDefaultHeaders());
+            Assert.assertEquals(response.statusCode(),200);
+            Post testPost = postUtils.extractPosts(response.getBody().asString()).get(0);
+            Assert.assertEquals(testPost.getUserId(),Samantha.getId());
+            Assert.assertEquals(testPost.getId(),post.getId());
+        });
 
+    }
 
+    @Test(description = "Find each comments in test user's posts using query parameters in URL"
+            ,dependsOnMethods = "validatePostComments")
+    public void validateCommentsByQueryParam()
+    {
+        Map<String,String> queryParams = new HashMap<>();
+        comments.forEach(comment->{
+            queryParams.put("postId",Integer.toString(comment.getPostId()));
+            queryParams.put("id",Integer.toString(comment.getId()));
+            Response response = api.get(urlUtils.generateURL(UrlHelpers
+                    .EndpointURL.COMMENTS,queryParams),api.getDefaultHeaders());
+            Assert.assertEquals(response.statusCode(),200);
+            Comment testComment = commentUtil.extractComments(response.getBody().asString()).get(0);
+            Assert.assertEquals(testComment.getPostId(),comment.getPostId());
+            Assert.assertEquals(testComment.getId(),comment.getId());
+        });
+
+    }
 }
