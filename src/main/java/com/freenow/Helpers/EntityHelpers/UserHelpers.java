@@ -1,13 +1,21 @@
 package com.freenow.helpers.EntityHelpers;
 
+/**
+ * @author Ranit
+ * Created on 11/08/2019
+ *
+ */
+
 import com.freenow.models.User;
-
 import org.json.JSONArray;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserHelpers {
+
+    private static Logger log =  LoggerFactory.getLogger(UserHelpers.class);
 
     /**
      * This method takes in a response in string format and expects it to be an array of users in
@@ -20,6 +28,7 @@ public class UserHelpers {
     {
         List<User> usersList = new ArrayList<>();
         JSONArray usersArray = new JSONArray(users);
+        log.info("Extracting Users from response body");
         for (int i = 0; i < usersArray.length(); i++)
         {
             usersList.add(new User(usersArray.getJSONObject(i)));

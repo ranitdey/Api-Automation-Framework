@@ -1,11 +1,20 @@
 package com.freenow.helpers.EntityHelpers;
+/**
+ * @author Ranit
+ * Created on 11/08/2019
+ *
+ */
 
 import com.freenow.models.Comment;
 import org.json.JSONArray;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommentHelpers {
+
+    private static Logger log =  LoggerFactory.getLogger(CommentHelpers.class);
 
 
     /**
@@ -19,6 +28,7 @@ public class CommentHelpers {
     {
         List<Comment> commentsList = new ArrayList<>();
         JSONArray commentsArray = new JSONArray(comments);
+        log.info("Extracting Comments from response body");
         for (int i = 0; i < commentsArray.length(); i++)
         {
             commentsList.add(new Comment(commentsArray.getJSONObject(i)));

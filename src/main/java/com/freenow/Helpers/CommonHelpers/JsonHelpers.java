@@ -17,7 +17,6 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import io.restassured.response.Response;
 
 public class JsonHelpers {
@@ -56,6 +55,7 @@ public class JsonHelpers {
                     (JsonHelpers.class.getResourceAsStream("/schemas/"+schemaName+".json")));
             Schema schema = SchemaLoader.load(jsonSchema);
             schema.validate(new JSONArray(response.getBody().asString()));
+            log.info("Loading JSON schema file {}.json successful");
             return true;
         }
         catch (ValidationException e)
