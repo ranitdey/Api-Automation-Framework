@@ -12,6 +12,10 @@ import com.freenow.tests.BaseTest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 
 
@@ -24,6 +28,7 @@ public class UserCommentScenarios extends BaseTest {
 
     @Parameters("user")
     @Test(description = "Find the given user from query parameters using the username and validate")
+    @Severity(SeverityLevel.CRITICAL)
     public void validateUserFromQuery(String user)
     {
         Map<String,String> queryParams = new HashMap<>();
@@ -41,6 +46,7 @@ public class UserCommentScenarios extends BaseTest {
 
     @Parameters("user")
     @Test(description = "Find the given user by fetching all the users and validate")
+    @Severity(SeverityLevel.CRITICAL)
     public void searchForUser(String testUser)
     {
         Response response = api.get(urlUtils
@@ -59,6 +65,7 @@ public class UserCommentScenarios extends BaseTest {
     }
 
     @Test(description = "Find all posts of an user and validate",dependsOnMethods = "searchForUser")
+    @Severity(SeverityLevel.CRITICAL)
     public void validateUserPosts()
     {
         Map<String,String> queryParams = new HashMap<>();
@@ -77,6 +84,7 @@ public class UserCommentScenarios extends BaseTest {
 
     @Test(description = "Find all comments for each post of an user and validate the email format"
             ,dependsOnMethods = "validateUserPosts")
+    @Severity(SeverityLevel.CRITICAL)
     public void validatePostComments()
     {
         Map<String,String> queryParams = new HashMap<>();
@@ -101,6 +109,7 @@ public class UserCommentScenarios extends BaseTest {
 
     @Test(description = "For the test user find each of his posts using query parameters in URL"
             ,dependsOnMethods = "validateUserPosts")
+    @Severity(SeverityLevel.CRITICAL)
     public void validatePostsByQueryParam()
     {
         Map<String,String> queryParams = new HashMap<>();
@@ -118,6 +127,7 @@ public class UserCommentScenarios extends BaseTest {
 
     @Test(description = "Find each comments in test user's posts using query parameters in URL"
             ,dependsOnMethods = "validatePostComments")
+    @Severity(SeverityLevel.CRITICAL)
     public void validateCommentsByQueryParam()
     {
         Map<String,String> queryParams = new HashMap<>();
