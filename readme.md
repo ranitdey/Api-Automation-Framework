@@ -1,4 +1,5 @@
 **API Automation Test Framework**
+
 Api automation test framework created with java and restAssured. This framework is integrated with 
 Allure reports which generates test reports in html format with all details.
 
