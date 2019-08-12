@@ -7,7 +7,6 @@ package com.freenow.library.helpers.EntityHelpers;
  */
 
 import com.freenow.library.models.User;
-
 import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -7,11 +7,9 @@ package com.freenow.library.helpers.EntityHelpers;
  */
 
 import com.freenow.library.models.Post;
-
 import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
