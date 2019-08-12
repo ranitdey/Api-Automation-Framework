@@ -38,6 +38,8 @@ public class BaseTest {
     @BeforeSuite(alwaysRun = true)
     public void setup()
     {
+        log.info("********************* API Automation Suite Started *********************");
+        log.info("Invoking setup");
         api = new HttpHelpers();
         config = new ConfigPropertiesHelpers();
         config.loadLogConfiguration();
@@ -47,7 +49,6 @@ public class BaseTest {
         postUtils= new PostHelpers();
         commentUtil = new CommentHelpers();
         jsonUtil = new JsonHelpers();
-        log.info("********************* API Automation Suite Started *********************");
         log.info("Initializing Test Suite.");
 
     }
