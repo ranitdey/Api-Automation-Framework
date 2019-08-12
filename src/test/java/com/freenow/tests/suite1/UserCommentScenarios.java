@@ -16,7 +16,6 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 
-
 public class UserCommentScenarios extends BaseTest {
 
     private User Samantha;
