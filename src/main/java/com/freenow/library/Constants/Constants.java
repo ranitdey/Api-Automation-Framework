@@ -1,4 +1,4 @@
-package com.freenow.Constants;
+package com.freenow.library.Constants;
 
 import java.util.regex.Pattern;
 

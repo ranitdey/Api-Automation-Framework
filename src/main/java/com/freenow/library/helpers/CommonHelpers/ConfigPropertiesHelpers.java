@@ -1,4 +1,4 @@
-package com.freenow.helpers.CommonHelpers;
+package com.freenow.library.helpers.CommonHelpers;
 
 /**
  * @author Ranit
@@ -14,9 +14,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import static com.freenow.Constants.Constants.getPropertiesFileName;
-import static com.freenow.Constants.Constants.log4jConfPath;
-import static com.freenow.Constants.Constants.propertiesFilePath;
+import static com.freenow.library.Constants.Constants.getPropertiesFileName;
+import static com.freenow.library.Constants.Constants.log4jConfPath;
+import static com.freenow.library.Constants.Constants.propertiesFilePath;
 
 public class ConfigPropertiesHelpers {
 

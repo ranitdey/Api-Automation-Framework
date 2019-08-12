@@ -1,4 +1,4 @@
-package com.freenow.helpers.CommonHelpers;
+package com.freenow.library.helpers.CommonHelpers;
 
 /**
  * @author Ranit

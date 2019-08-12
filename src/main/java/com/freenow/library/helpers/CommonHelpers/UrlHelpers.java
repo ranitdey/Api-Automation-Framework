@@ -1,4 +1,4 @@
-package com.freenow.helpers.CommonHelpers;
+package com.freenow.library.helpers.CommonHelpers;
 
 /**
  * @author Ranit
@@ -10,9 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.Map;
 import java.util.Properties;
-import static com.freenow.Constants.Constants.commentsRoute;
-import static com.freenow.Constants.Constants.postsRoute;
-import static com.freenow.Constants.Constants.usersRoute;
+import static com.freenow.library.Constants.Constants.commentsRoute;
+import static com.freenow.library.Constants.Constants.postsRoute;
+import static com.freenow.library.Constants.Constants.usersRoute;
 
 public class UrlHelpers {
 

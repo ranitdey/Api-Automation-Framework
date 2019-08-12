@@ -1,4 +1,4 @@
-package com.freenow.models;
+package com.freenow.library.models;
 
 import org.json.JSONObject;
 

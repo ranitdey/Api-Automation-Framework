@@ -1,11 +1,12 @@
-package com.freenow.helpers.EntityHelpers;
+package com.freenow.library.helpers.EntityHelpers;
 /**
  * @author Ranit
  * Created on 11/08/2019
  *
  */
 
-import com.freenow.models.Comment;
+import com.freenow.library.models.Comment;
+
 import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

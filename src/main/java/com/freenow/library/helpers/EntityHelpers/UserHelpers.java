@@ -1,4 +1,4 @@
-package com.freenow.helpers.EntityHelpers;
+package com.freenow.library.helpers.EntityHelpers;
 
 /**
  * @author Ranit
@@ -6,7 +6,8 @@ package com.freenow.helpers.EntityHelpers;
  *
  */
 
-import com.freenow.models.User;
+import com.freenow.library.models.User;
+
 import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

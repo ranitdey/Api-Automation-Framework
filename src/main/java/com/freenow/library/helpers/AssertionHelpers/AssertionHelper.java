@@ -1,4 +1,4 @@
-package com.freenow.helpers.AssertionHelpers;
+package com.freenow.library.helpers.AssertionHelpers;
 /**
  * @author Ranit
  * Created on 11/08/2019
@@ -9,7 +9,7 @@ package com.freenow.helpers.AssertionHelpers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.regex.Matcher;
-import static com.freenow.Constants.Constants.VALID_EMAIL_ADDRESS_REGEX;
+import static com.freenow.library.Constants.Constants.VALID_EMAIL_ADDRESS_REGEX;
 
 public class AssertionHelper {
 

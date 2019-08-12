@@ -1,14 +1,14 @@
 package com.freenow.tests;
 
 
-import com.freenow.helpers.AssertionHelpers.AssertionHelper;
-import com.freenow.helpers.CommonHelpers.ConfigPropertiesHelpers;
-import com.freenow.helpers.CommonHelpers.HttpHelpers;
-import com.freenow.helpers.CommonHelpers.JsonHelpers;
-import com.freenow.helpers.CommonHelpers.UrlHelpers;
-import com.freenow.helpers.EntityHelpers.CommentHelpers;
-import com.freenow.helpers.EntityHelpers.PostHelpers;
-import com.freenow.helpers.EntityHelpers.UserHelpers;
+import com.freenow.library.helpers.AssertionHelpers.AssertionHelper;
+import com.freenow.library.helpers.CommonHelpers.ConfigPropertiesHelpers;
+import com.freenow.library.helpers.CommonHelpers.HttpHelpers;
+import com.freenow.library.helpers.CommonHelpers.JsonHelpers;
+import com.freenow.library.helpers.CommonHelpers.UrlHelpers;
+import com.freenow.library.helpers.EntityHelpers.CommentHelpers;
+import com.freenow.library.helpers.EntityHelpers.PostHelpers;
+import com.freenow.library.helpers.EntityHelpers.UserHelpers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
