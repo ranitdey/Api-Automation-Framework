@@ -140,6 +140,4 @@ public class UserCommentScenarios extends BaseTest {
             Assert.assertEquals(testComment.getId(),comment.getId());
         });
     }
-
-
 }
