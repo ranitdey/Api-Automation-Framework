@@ -9,7 +9,6 @@ import com.freenow.library.helpers.CommonHelpers.UrlHelpers;
 import com.freenow.library.helpers.EntityHelpers.CommentHelpers;
 import com.freenow.library.helpers.EntityHelpers.PostHelpers;
 import com.freenow.library.helpers.EntityHelpers.UserHelpers;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
